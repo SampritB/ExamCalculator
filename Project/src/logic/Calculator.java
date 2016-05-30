@@ -11,16 +11,22 @@ package logic;
  */
 public class Calculator {
         
-    public int getMin(int percent, int cwp ,int cww )
+    public static void main (String[] args)
     {
-        int answer = cwworth/10;
-        answer = cwpercent* answer;
-        answer = percent - answer;
-        int cool = percent/10;
-        answer = answer/cool;
-        
-        return answer;
-        
+        System.out.println(getMin(70,80,40));
+    }
+    
+    public static String getMin(double percent, double cwp, double cww )
+    {
+        double a = cww/100;
+        double b = cwp*a;
+        double c = percent - b;
+        double d = 100-cww;
+        double e = d/100;
+        double answer = c/e;
+        answer = Math.round(answer);
+        String sa = Double.toString(answer);
+        return sa;
     }
     
     }

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import logic.Calculator;
 
 public class FXMLController implements Initializable{
 
@@ -44,19 +45,36 @@ public class FXMLController implements Initializable{
     @FXML
     private Text passresult;
 
-    @FXML
-    void screwed(MouseEvent event) {
-        String scww  = cwworth.getText();
-        String scwp = cwpercent.getText();
-        int cww = Integer.parseInt(scww);
-        int cwp = Integer.parseInt(scwp);
-        
-        
-    }
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @FXML
+    private void screwed(javafx.scene.input.MouseEvent event) {
+        String scww  = cwworth.getText();
+        String scwp = cwpercent.getText();
+        Double cww = Double.parseDouble(scww);
+        Double cwp = Double.parseDouble(scwp);
+        
+        String answerfirst = Calculator.getMin(70, cwp, cww);
+        first.setText("First (70%)");
+        firstresult.setText(answerfirst);
+        
+        String answertwoone = Calculator.getMin(60, cwp, cww);
+        twoone.setText("2.1 (60%)");
+        twooneresult.setText(answertwoone);
+        
+        String answertwotwo = Calculator.getMin(50, cwp, cww);
+        twotwo.setText("2.2 (50%)");
+        twotworesult.setText(answertwotwo);
+        
+        String answerpass = Calculator.getMin(40, cwp, cww);
+        pass.setText("Pass (40%)");
+        passresult.setText(answerpass); 
+        
     }
 
 }
